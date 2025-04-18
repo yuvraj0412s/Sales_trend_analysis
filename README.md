@@ -1,37 +1,25 @@
-# 🛍️ Sales Trend Analysis Using SQL
+# 📆 Monthly Sales Analysis (Task 6) - SQL
 
-This project is part of a data analysis task focused on understanding **monthly revenue and order volume trends** from an e-commerce dataset. We used **MySQL** to write a query that aggregates sales by month and year.
+This project focuses on generating a **monthly sales summary** using **MySQL**. The goal is to calculate **total revenue** and **total orders** for each month between **January 2003 and December 2004**.
 
----
+## 🛠️ Task Overview
 
-## 📊 Task Objective
+Using the `orders` table, we analyze:
+- Monthly total revenue
+- Number of distinct orders per month
 
-Perform a **Sales Trend Analysis** using SQL:
-- Analyze **monthly revenue** (`SUM(sales)`)
-- Analyze **monthly order volume** (`COUNT(DISTINCT order_id)`)
+## 🔍 SQL Query Used
 
----
-
-## 🧰 Tools Used
-
-- SQL (MySQL Workbench)
-- Dataset: `jewelry_cleaned.csv`
-
----
-
-## 📝 SQL Query Overview
-
-sql
-SELECT
-    YEAR(STR_TO_DATE(order_date, '%Y-%m-%d')) AS year,
-    MONTH(STR_TO_DATE(order_date, '%Y-%m-%d')) AS month,
+```sql
+SELECT 
+    DATE_FORMAT(order_date, '%Y-%m') AS month_year,
     SUM(amount) AS total_revenue,
     COUNT(DISTINCT order_id) AS total_orders
-FROM
-    jewelry_cleaned
-GROUP BY
-    YEAR(STR_TO_DATE(order_date, '%Y-%m-%d')),
-    MONTH(STR_TO_DATE(order_date, '%Y-%m-%d'))
-ORDER BY
-    year, month
-LIMIT 12;
+FROM 
+    orders
+WHERE
+    order_date BETWEEN '2003-01-01' AND '2004-12-31'
+GROUP BY 
+    DATE_FORMAT(order_date, '%Y-%m')
+ORDER BY 
+    DATE_FORMAT(order_date, '%Y-%m');
