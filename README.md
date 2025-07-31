@@ -5,7 +5,7 @@
 ![Pandas](https://img.shields.io/badge/Pandas-Used-brightgreen?style=flat-square)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=flat-square)
 
-> A real-world data project where I cleaned and transformed a sales dataset using Python, and performed time-based trend analysis using SQL — revealing insights on monthly revenue and order volume.
+> A real-world data project where I cleaned and transformed a sales dataset using Python, and performed time-based trend analysis using SQL revealing insights on monthly revenue and order volume.
 
 ---
 
